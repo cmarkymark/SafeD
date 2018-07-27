@@ -15,7 +15,7 @@ connect_to_database <- function(username, password) {
   # Load the database connection
   # If connection established, then will return object representing the connection
   # If connection not established, then...
-  con <- dbConnect(drv,
+  con <- dbConnect(drv, dbname = "safed",
                    host = "130.191.118.107", port = 5432,
                    user = username, password = password)
 
