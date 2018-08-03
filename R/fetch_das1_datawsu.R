@@ -33,7 +33,7 @@ fetch_das1_datawsu <- function(con, deviceID, tripID)
       counter <- 1;
     }
   }
-  queryString <- paste(queryString, "LIMIT 3000;");
+  queryString <- paste(queryString, "LIMIT 10;");
   df <- dbGetQuery(con, queryString);
 
   return(df); #return
