@@ -4,10 +4,9 @@
 #' @title Fetch Das1 Front Targets Data
 #' @param con PostgreSQL db connection object
 #' @param deviceID optional search parameter, Device ID
-#' @param tripID optional search parameter, trip ID
-#' @return
+#' @return DataFrame representing data from the das1_datafrontobjects table
 #' @examples
-#' fetch_das1_datafronttargets(con, deviceID = 17103, tripID = 68)
+#' fetch_das1_datafronttargets(con, deviceID = 17103)
 #
 
 fetch_das1_datafronttargets <- function(con, deviceID, noLimit = FALSE)

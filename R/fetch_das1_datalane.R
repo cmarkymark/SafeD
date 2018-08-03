@@ -6,7 +6,7 @@
 #' @param deviceID optional search parameter, Device ID
 #' @return Entries from the das1_datatable
 #' @examples
-#' fetch_das1_datalane(con, deviceID = 17103, tripID = 68)
+#' fetch_das1_datalane(con, deviceID = 17103)
 #
 
 fetch_das1_datalane <- function(con, deviceID, noLimit = FALSE)

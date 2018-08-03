@@ -4,10 +4,9 @@
 #' @title Fetch Das1 WSU Data
 #' @param con PostgreSQL db connection object
 #' @param deviceID optional search parameter, Device ID
-#' @param tripID optional search parameter, trip ID
-#' @return
+#' @return data frame representing data from the datawsu table
 #' @examples
-#' fetch_das1_datawsu(con, deviceID = 17103, tripID = 68)
+#' fetch_das1_datawsu(con, deviceID = 17103)
 #
 
 fetch_das1_datawsu <- function(con, deviceID, noLimit = FALSE)

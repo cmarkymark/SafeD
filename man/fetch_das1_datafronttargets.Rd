@@ -4,15 +4,16 @@
 \alias{fetch_das1_datafronttargets}
 \title{Fetch Das1 Front Targets Data}
 \usage{
-fetch_das1_datafronttargets(con, deviceID, tripID)
+fetch_das1_datafronttargets(con, deviceID, noLimit = FALSE)
 }
 \arguments{
 \item{con}{PostgreSQL db connection object}
 
 \item{deviceID}{optional search parameter, Device ID}
-
-\item{tripID}{optional search parameter, trip ID}
+}
+\value{
+DataFrame representing data from the das1_datafrontobjects table
 }
 \examples{
-fetch_das1_datafronttargets(con, deviceID = 17103, tripID = 68)
+fetch_das1_datafronttargets(con, deviceID = 17103)
 }

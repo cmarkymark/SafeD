@@ -4,15 +4,16 @@
 \alias{fetch_das1_datawsu}
 \title{Fetch Das1 WSU Data}
 \usage{
-fetch_das1_datawsu(con, deviceID, tripID)
+fetch_das1_datawsu(con, deviceID, noLimit = FALSE)
 }
 \arguments{
 \item{con}{PostgreSQL db connection object}
 
 \item{deviceID}{optional search parameter, Device ID}
-
-\item{tripID}{optional search parameter, trip ID}
+}
+\value{
+data frame representing data from the datawsu table
 }
 \examples{
-fetch_das1_datawsu(con, deviceID = 17103, tripID = 68)
+fetch_das1_datawsu(con, deviceID = 17103)
 }

@@ -4,15 +4,16 @@
 \alias{fetch_das1_datalane}
 \title{Fetch Das1 Lane Data}
 \usage{
-fetch_das1_datalane(con, deviceID, tripID)
+fetch_das1_datalane(con, deviceID, noLimit = FALSE)
 }
 \arguments{
 \item{con}{PostgreSQL db connection object}
 
 \item{deviceID}{optional search parameter, Device ID}
-
-\item{tripID}{optional search parameter, trip ID}
+}
+\value{
+Entries from the das1_datatable
 }
 \examples{
-fetch_das1_datalane(con, deviceID = 17103, tripID = 68)
+fetch_das1_datalane(con, deviceID = 17103)
 }
