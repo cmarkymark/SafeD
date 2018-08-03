@@ -20,7 +20,7 @@ fetch_das1_datawsu <- function(con, deviceID, noLimit = FALSE)
   }
   if(noLimit == FALSE)
   {
-  queryString <- paste(queryString, "LIMIT 2000;");
+  queryString <- paste(queryString, "LIMIT 20000;");
   }
   df <- dbGetQuery(con, queryString);
 
