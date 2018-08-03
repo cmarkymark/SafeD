@@ -10,30 +10,19 @@
 #' fetch_das1_datawsu(con, deviceID = 17103, tripID = 68)
 #
 
-fetch_das1_datawsu <- function(con, deviceID, tripID)
+fetch_das1_datawsu <- function(con, deviceID, noLimit = FALSE)
 {
   queryString <- "SELECT * FROM spmd.das1_datawsu";
-  counter <- 0; #counter for inserting AND statement into 'WHERE' of search query if necessary
-  if(!missing(deviceID)||!missing(tripID)) #check for optional arguments
+  if(!missing(deviceID)) #check for optional arguments
   {
     queryString <- paste(queryString, "WHERE");
-    if(!missing(deviceID)) { #insert deviceid into search query
-      queryString <- paste(queryString, "device =", deviceID);
+    queryString <- paste(queryString, "device =", deviceID);
 
-      counter <- 1;
-    }
-    if(!missing(tripID)) { #insert tripID
-      if(counter == 1)
-      {
-        queryString <- paste(queryString, "AND");
-
-      }
-      queryString <- paste(queryString, "trip =", tripID);
-
-      counter <- 1;
-    }
   }
-  queryString <- paste(queryString, "LIMIT 10;");
+  if(noLimit == FALSE)
+  {
+  queryString <- paste(queryString, "LIMIT 2000;");
+  }
   df <- dbGetQuery(con, queryString);
 
   return(df); #return

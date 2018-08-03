@@ -4,36 +4,23 @@
 #' @title Fetch Das1 Lane Data
 #' @param con PostgreSQL db connection object
 #' @param deviceID optional search parameter, Device ID
-#' @param tripID optional search parameter, trip ID
-#' @return
+#' @return Entries from the das1_datatable
 #' @examples
 #' fetch_das1_datalane(con, deviceID = 17103, tripID = 68)
 #
 
-fetch_das1_datalane <- function(con, deviceID, tripID)
+fetch_das1_datalane <- function(con, deviceID, noLimit = FALSE)
 {
   queryString <- "SELECT * FROM spmd.das1_datalane";
-  counter <- 0; #counter for inserting AND statement into 'WHERE' of search query if necessary
-  if(!missing(deviceID)||!missing(tripID)) #check for optional arguments
+  if(!missing(deviceID)) #check for optional arguments
   {
     queryString <- paste(queryString, "WHERE");
-    if(!missing(deviceID)) { #insert deviceid into search query
-      queryString <- paste(queryString, "device =", deviceID);
-
-      counter <- 1;
-    }
-    if(!missing(tripID)) { #insert tripID
-      if(counter == 1)
-      {
-        queryString <- paste(queryString, "AND");
-
-      }
-      queryString <- paste(queryString, "trip =", tripID);
-
-      counter <- 1;
-    }
+    queryString <- paste(queryString, "device =", deviceID);
   }
-  queryString <- paste(queryString, "LIMIT 3000;");
+  if(noLimit == FALSE)
+  {
+    queryString <- paste(queryString, "LIMIT 2000;");
+  }
   df <- dbGetQuery(con, queryString);
 
   return(df); #return

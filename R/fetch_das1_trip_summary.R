@@ -36,6 +36,7 @@ fetch_das1_trip_summary <- function(con, deviceID, startdate)
       counter <- 1;
     }
   }
+
   #queryString1 <- paste(queryString1, "LIMIT 3000;");
   #queryString2 <- paste(queryString2, "LIMIT 1000;");
   df1 <- dbGetQuery(con, queryString1);
