@@ -1,6 +1,6 @@
 # This function will pull entries from the Das1_Trip_Summary tablw
 #
-#'
+#' @title Fetch Trip Summaries
 #' @param con PostgreSQL db connection object
 #' @param deviceID optional search parameter, Device ID
 #' @param startdate optional search parameter, trip date, format 'YYYY-MM-DD'
