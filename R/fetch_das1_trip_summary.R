@@ -11,19 +11,20 @@
 
 fetch_das1_trip_summary <- function(con, deviceID, startdate)
 {
+  #because there are two databases we must query from both of them
   queryString1 <- "SELECT * FROM spmd.ex_tripsummary_datawsu_april";
   queryString2 <- "SELECT * FROM spmd.ex_tripsummary_datawsu_october";
-  counter <- 0;
-  if(!missing(deviceID)||!missing(startdate))
+  counter <- 0; #counter is being used to insert 'AND' into query 'WHERE' clause if necessary
+  if(!missing(deviceID)||!missing(startdate)) #checking if the optional fields have been utilized
   {
     queryString1 <- paste(queryString1, "WHERE");
     queryString2 <- paste(queryString2, "WHERE");
-    if(!missing(deviceID)) {
+    if(!missing(deviceID)) { #insert deviceID into search query
       queryString1 <- paste(queryString1, "deviceid =", deviceID);
       queryString2 <- paste(queryString2, "deviceid =", deviceID);
       counter <- 1;
     }
-    if(!missing(startdate)) {
+    if(!missing(startdate)) { #insert date into search query
       if(counter == 1)
       {
         queryString1 <- paste(queryString1, "AND");
@@ -40,6 +41,6 @@ fetch_das1_trip_summary <- function(con, deviceID, startdate)
   df1 <- dbGetQuery(con, queryString1);
   df2 <- dbGetQuery(con, queryString2);
 
-  return_df <- rbind(df1,df2);
-  return(return_df);
+  return_df <- rbind(df1,df2); #combine the two returned data frames
+  return(return_df); #return
 }
